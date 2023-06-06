@@ -31,19 +31,24 @@
       function handleClick() {
         let id = inputTodo.value;
         // - use the id to call the api to get a todo back
-        fetch("http://jsonplaceholder.typicode.com/todos/1")
+        fetch(`http://jsonplaceholder.typicode.com/todos/${id}`)
           .then((response) => response.json())
           .then((body) => {
             // - verify I got the data back
             console.log(body);
             // - display one piece of data
             let todo = body;
-            console.log(divDisplay);
+            // divDisplay.innerText = todo.title
+            let para = document.createElement("p");
+            para.innerText = todo.title
+            divDisplay.appendChild(para);
+
+            let checkbox = document.createElement("input")
+            checkbox.type = "checkbox"
+            checkbox.checked = todo.completed
+            divDisplay.appendChild(checkbox)
           });
       }
-
-      // - verify it works
-
       // - display another pieces of data
 
       // - verify it works
