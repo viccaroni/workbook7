@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Users Data</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.classless.min.css"
+    />
+  </head>
+  <body>
+    <header></header>
+    <main>
+      <h1 style="text-align: center;">USERS</h1>
+      <table id="user-table-head">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>E-mail</th>
+            <th>Phone</th>
+            <th>Address</th>
+          </tr>
+        </thead>
+        <tbody id="user-table-body"></tbody>
+      </table>
+    </main>
+    <footer></footer>
+    <script>
+      "use strict";
+
+      let userTableBody = document.querySelector("#user-table-body");
+
+      fetch("http://jsonplaceholder.typicode.com/users/")
+        .then((response) => response.json())
+        .then((users) => {
+          for (const user of users) {
+            console.log(user);
+
+            buildTableRow(user, userTableBody);
+          }
+        });
+
+
+
+      function buildTableRow(user, userTableBody) {
+        let row = document.createElement("tr");
+      userTableBody.appendChild(row);
+
+        let cell1 = document.createElement("td");
+        row.appendChild(cell1);
+        cell1.innerText = user.id;
+
+        let cell4 = document.createElement("td");
+        row.appendChild(cell4);
+        cell4.innerText = user.name;
+
+        let cell5 = document.createElement("td");
+        row.appendChild(cell5);
+        cell5.innerText = user.username;
+
+        let cell6 = document.createElement("td");
+        row.appendChild(cell6);
+        cell6.innerText = user.email;
+
+        let cell7 = document.createElement("td");
+        row.appendChild(cell7);
+        cell7.innerText = user.phone;
+
+        let cell8 = document.createElement("td");
+        row.appendChild(cell8);
+        cell8.innerText = `${user.address.street} street, ${user.address.suite}, ${user.address.city}`;
+      }
+
+
+      //see the structure of the data----
+
+      //make a table with columns for each field in the api data---
+
+      //make a table body---
+
+      //make an api call to get the data---
+
+      //verify that the data was returned---
+
+      //get the table body from the html---
+
+      //use a for loop to go through all the data in the array--
+
+      //make a row for each user by using the table body
+
+      //make a cell for each user property
+    </script>
+  </body>
+</html>
